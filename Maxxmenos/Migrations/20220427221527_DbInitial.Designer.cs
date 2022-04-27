@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Maxxmenos.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20220427091850_dbInitial")]
-    partial class dbInitial
+    [Migration("20220427221527_DbInitial")]
+    partial class DbInitial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -93,7 +93,8 @@ namespace Maxxmenos.Migrations
 
                     b.HasIndex("CategoriaId");
 
-                    b.HasIndex("ProveedorId");
+                    b.HasIndex("ProveedorId")
+                        .IsUnique();
 
                     b.ToTable("Producto");
                 });
@@ -106,6 +107,9 @@ namespace Maxxmenos.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Compania")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProductoId")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Representante")
@@ -349,8 +353,8 @@ namespace Maxxmenos.Migrations
                         .IsRequired();
 
                     b.HasOne("Maxxmenos.Models.Proveedor", "Proveedor")
-                        .WithMany("Producto")
-                        .HasForeignKey("ProveedorId")
+                        .WithOne("Producto")
+                        .HasForeignKey("Maxxmenos.Models.Producto", "ProveedorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

@@ -19,6 +19,12 @@ namespace Maxxmenos.Controllers
             _context = context;
         }
 
+        public async Task<IActionResult> BuscarProveedor()
+        {
+            var applicationDBContext = _context.proveedors.Include(p => p.Producto);
+            return View(await applicationDBContext.ToListAsync());
+        }
+
         // GET: Proveedores
         public async Task<IActionResult> Index()
         {

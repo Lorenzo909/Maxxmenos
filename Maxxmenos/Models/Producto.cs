@@ -20,5 +20,8 @@ namespace Maxxmenos.Models
         //Propiedad de navegación
         public Categoria Categoria { get; set; }
         public Proveedor Proveedor { set; get; }
+
+       
+
     }
 }

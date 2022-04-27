@@ -4,44 +4,54 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<div class="col-md-8 mx-auto mt-2">
+    <h3>Lista de Productos</h3>
+    <a class="btn btn-secondary text-light mb-2" asp-action="Create">Create New</a>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Fecha)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Clientes)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Producto)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Fecha)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Clientes.Cedula)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Producto.IdProducto)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdVenta">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdVenta">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdVenta">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    <table id="table_id" class="display mt-2">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fecha)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Clientes)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Producto)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fecha)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Clientes.Cedula)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Producto.IdProducto)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.IdVenta">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.IdVenta">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.IdVenta">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    @section scripts{
+        <script>
+            $('#table_id').DataTable({
+                "processing": true,
+                "searching": false
+
+            });
+        </script>
+    }

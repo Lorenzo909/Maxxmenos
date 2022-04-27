@@ -13,7 +13,9 @@ namespace Maxxmenos.Models
         public string Compania { get; set; }
         public string Representante { get; set; }
         public string Telefono { get; set; }
+        public string ProductoId { set; get; }
 
-        public List<Producto> Producto { set; get; }
+        public Producto Producto { set; get; }
+        
     }
 }

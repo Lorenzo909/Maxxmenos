@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Maxxmenos.Migrations
 {
-    public partial class dbInitial : Migration
+    public partial class DbInitial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -85,7 +85,8 @@ namespace Maxxmenos.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Compania = table.Column<string>(nullable: true),
                     Representante = table.Column<string>(nullable: true),
-                    Telefono = table.Column<string>(nullable: true)
+                    Telefono = table.Column<string>(nullable: true),
+                    ProductoId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -301,7 +302,8 @@ namespace Maxxmenos.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Producto_ProveedorId",
                 table: "Producto",
-                column: "ProveedorId");
+                column: "ProveedorId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_ventas_ClienteCedula",

@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Maxxmenos.Models.Proveedor>
+
+@{
+    ViewData["Title"] = "BuscarProveedor";
+}
+
+<h1>BuscarProveedor</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table id="table_id" class="display mt-2">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Compania)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Representante)
+            </th>
+            <th>
+                Nombre
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Compania)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Representante)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Producto.Nombre)
+                </td>
+                <td>
+                    
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section scripts{
+    <script>
+    $('#table_id').DataTable({
+        "processing": true
+
+
+    });
+    </script>
+}

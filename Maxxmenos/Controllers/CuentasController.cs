@@ -88,9 +88,9 @@ namespace Maxxmenos.Controllers
 
                 if (result.IsLockedOut)
 
-                    ModelState.AddModelError("", "La cuenta a sido bloqueada, Intenta dentro de 3 minutos");
+                    ModelState.AddModelError("", "La cuenta a sido bloqueada, Intenta dentro de 1 minutos");
 
-                ModelState.AddModelError(string.Empty, "Login Failed: Invalid Email or password");
+                ModelState.AddModelError(string.Empty, "Inicio Fallido, Usuario o Contrasenia Incorrecta");
 
 
             }
