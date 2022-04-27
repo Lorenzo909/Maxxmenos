@@ -24,10 +24,23 @@
             @Html.DisplayFor(model => model.Descripcion)
         </dd>
     </dl>
-
+    
     <form asp-action="Delete">
+
+        <input type="hidden" name="del" id="del" value="" />
         <input type="hidden" asp-for="IdCategoria" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+        <input type="submit" value="Delete" class="btn btn-danger" onclick="javascript:confirmar()" />
+        <a asp-action="Index">Back to List </a>
     </form>
 </div>
+
+<script>
+    confirmar
+    function confirmar() {
+        if (confirm("Estas Seguro(a) de Eliminar???")) {
+            document.getElementById("del").value = "si";
+        } else {
+            document.getElementById("del").value = "no";
+        }
+    }
+</script>
